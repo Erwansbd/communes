@@ -2,11 +2,14 @@ package org.antislashn.communes.entities;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import org.antislashn.communes.Constantes;
+import org.antislashn.communes.dao.CommuneDAO;
 import org.antislashn.communes.entities.Region;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -20,6 +23,14 @@ public class TestDepartementDB {
 		Departement r = em.find(Departement.class, "01");
 		assertNotNull(r);
 		em.close();
+	}
+	
+	@Test
+	public void testAllDepartements() {
+		CommuneDAO dao = new CommuneDAO(emf);
+		List<String> departements = dao.getAllDepartements();
+		assertNotNull(departements);
+		assertEquals(109,departements.size());
 	}
 	
 	@BeforeClass

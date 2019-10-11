@@ -8,10 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="departments")
+@NamedQueries({@NamedQuery(name = "getalldepartements", query = "SELECT d.nom FROM Departement d")})
 public class Departement {
 	@Id
 	private String code;
